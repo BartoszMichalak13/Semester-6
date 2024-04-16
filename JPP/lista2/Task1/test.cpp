@@ -60,7 +60,12 @@ int main(int argc, char *argv[]) {
   std::cout << "double " << typeid((double)g9).name() << std::endl;
   std::cout << "double " << (double)g9 << std::endl;
   // std::cout << "bool " << typeid((bool)g5).name() << std::endl;
-
+    GF a = GF(p);
+    a.value = 5;
+    GF b = GF(p);
+    b.value = 1;
+    std::cout << a << " b " << b << std::endl;
+    std::cout << b/a << std::endl;
   try {
     gf3 /= 0;
   } catch (const std::invalid_argument& e) {

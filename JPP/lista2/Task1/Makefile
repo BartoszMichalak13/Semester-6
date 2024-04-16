@@ -1,5 +1,5 @@
 CPP = g++
-CPPFLAGS = -Wall -Wextra
+CPPFLAGS = -Wall -O3 -std=c++23
 
 TEST_FILE = test.cpp 
 SRCS = GF.cpp $(TEST_FILE)

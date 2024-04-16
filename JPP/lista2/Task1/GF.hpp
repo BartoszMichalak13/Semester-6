@@ -2,8 +2,8 @@
 #define GFHEADER
 #include <cmath>
 #include <exception>
-//TODO -  WYJATKI I MAIN W TESCIE
-
+#include <cstdint>
+#include <iostream>
 #include <typeinfo>
 
 class GF {
