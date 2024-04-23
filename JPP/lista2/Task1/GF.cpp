@@ -17,11 +17,15 @@ uint64_t GF::modPow(GF gf, uint64_t exp) {
   }
   return prev_gf;
 }
-GF::GF(uint64_t p) : p(p) {}
-GF::GF() : p(1234577){}
-uint64_t const GF::getP(void) {
+uint64_t GF::getP(void) {
   return p;
 }
+GF::GF(uint64_t p) : p(p) {}
+GF::GF() : p(1234577){}
+GF::GF(GF const& gf) : p(gf.p) {
+  value = gf.value;  
+}
+
 
 GF::operator bool() const {
   return value != 0;
@@ -65,7 +69,8 @@ GF GF::operator/(GF const& obj) {
 }
 
 void GF::operator=(GF const& obj) {
-  value = obj.value;
+  value = (obj.value) % p;
+  // p = obj.p;
 }
 void GF::operator+=(GF const& obj) {
   value = (value + obj.value) % p;

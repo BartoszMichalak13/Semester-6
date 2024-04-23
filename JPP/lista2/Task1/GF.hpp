@@ -16,7 +16,8 @@ class GF {
     uint64_t value;
     GF(uint64_t p);
     GF();
-    uint64_t const getP(void);
+    GF(GF const& gf);
+    uint64_t getP(void);
 
     explicit operator bool() const;
     explicit operator int() const;
