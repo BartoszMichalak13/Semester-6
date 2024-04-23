@@ -10,11 +10,7 @@ int main(int argc, char *argv[]) {
     p = atoi(argv[1]);
   }
   GF gf = GF(p);
-
-  //test for requiredProperties.hpp:14:4: error: deduced expression type does not satisfy placeholder constraints
-  //  14 |   {a.value} -> std::same_as<uint64_t>;
   gf.value = 12;
-  std::cout << "gfp " << gf.getP() << std::endl;
 
 
   // Stworzenie obiektu DHSetup dla ciała o charakterystyce 1234567891
@@ -27,28 +23,10 @@ int main(int argc, char *argv[]) {
   // Uzyskanie kluczy publicznych
   GF alicePublicKey = alice.getPublicKey();
   GF bobPublicKey = bob.getPublicKey();
-  
-
-
-  std::cout << std::endl;
-  std::cout << "alicePublicKey.getP(): " << alicePublicKey.getP() << std::endl;
-  std::cout << "bobPublicKey.getP(): " << alicePublicKey.getP() << std::endl;
-  std::cout << "alicePublicKey: " << alice.getPublicKey() << std::endl;
-  std::cout << "bobPublicKey: " << bob.getPublicKey() << std::endl;
-  std::cout << "alicePRIVATEKey: " << alice.PRIVATEKEY() << std::endl;
-  std::cout << "bobPRIVATEKey: " << bob.PRIVATEKEY() << std::endl;
-  std::cout << std::endl;
 
   // Wymiana kluczy publicznych
   alice.setKey(bobPublicKey);
   bob.setKey(alicePublicKey);
-
-  std::cout << std::endl;
-  std::cout << "alicePublicKey: " << alice.getPublicKey() << std::endl;
-  std::cout << "bobPublicKey: " << bob.getPublicKey() << std::endl;
-  std::cout << "alicePRIVATEKey: " << alice.PRIVATEKEY() << std::endl;
-  std::cout << "bobPRIVATEKey: " << bob.PRIVATEKEY() << std::endl;
-  std::cout << std::endl;
 
   // Test szyfrowania i deszyfrowania
   GF plaintext = GF(p);
@@ -62,13 +40,6 @@ int main(int argc, char *argv[]) {
   std::cout << "Plaintext: " << plaintext << std::endl;
   std::cout << "Encrypted: " << encrypted << std::endl;
   std::cout << "Decrypted: " << decrypted << std::endl;
-  std::cout << std::endl;
-
-  std::cout << std::endl;
-  std::cout << "alicePublicKey: " << alice.getPublicKey() << std::endl;
-  std::cout << "bobPublicKey: " << bob.getPublicKey() << std::endl;
-  std::cout << "alicePRIVATEKey: " << alice.PRIVATEKEY() << std::endl;
-  std::cout << "bobPRIVATEKey: " << bob.PRIVATEKEY() << std::endl;
   std::cout << std::endl;
 
   plaintext.value = 128422;

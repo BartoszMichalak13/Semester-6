@@ -1,9 +1,7 @@
 #ifndef DHSHEADER
 #define DHSHEADER
-// #include <concepts> //concepts
 #include <cstring> //memset
 #include <vector> //vector
-// #include "lista2/Task1/GF.hpp"
 #include "requiredProperties.hpp"
 //EXTRA: add more concepts, like contains addition etc.
 #include <iostream>
@@ -32,7 +30,6 @@ class DHSetup {
 
     [[nodiscard]] bool check_generator(T& canditate, uint64_t& p) {
       std::vector<uint64_t> const primes = generate_primes(p-1);
-      // for (uint64_t i = 0; i < primes.size(); ++i) {
       for (uint64_t const& i : primes) {
         //check types in this if, they're a bit wild
         if (canditate * (p-1)/i == 1) {
@@ -45,24 +42,14 @@ class DHSetup {
   public:
 
     DHSetup(T& a) : p(a.getP()), generator(a.getP()) {
-
-      // gfInstance = a;
-
-      // uint64_t p = a.getP();
-      std::cout << "p " << p << std::endl;
-      std::cout << "a.getP() " << a.getP() << std::endl;
-
       std::random_device rd;
       std::mt19937 gen(rd());
       std::uniform_int_distribution<uint64_t> dis(1,p-1);
-      // std::uniform_int_distribution<T> dis(1,p-1);
       T gf = T(p);
       gf.value = dis(gen);
-      // T candidate = dis(gen);
       T candidate = gf;
       while (!check_generator(candidate, p)) {
         gf.value = dis(gen);
-        // candidate = dis(gen);
         candidate = gf;
       }
       generator = candidate;
@@ -77,7 +64,6 @@ class DHSetup {
     }
 
     static T power(T a, unsigned long b) {
-      // std::cout  << "A p " << a.getP() << std::endl;
         if (b == 1) {
           return a;
         }
