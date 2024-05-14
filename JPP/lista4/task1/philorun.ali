@@ -1,0 +1,68 @@
+V "GNAT Lib v10"
+M P W=b
+P SS ZX
+
+RN
+RV NO_IO
+RV NO_SECONDARY_STACK
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV SPARK_05
+
+U philorun%b		philorun.adb		e4270d7f NE OO SU IL
+W ada%s			ada.ads			ada.ali
+W ada.command_line%s	a-comlin.adb		a-comlin.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W philosophers%s	philosophers.adb	philosophers.ali
+Z system.concat_2%s	s-conca2.adb		s-conca2.ali
+Z system.img_int%s	s-imgint.adb		s-imgint.ali
+Z system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+Z system.val_int%s	s-valint.adb		s-valint.ali
+
+D ada.ads		20230707070819 76789da1 ada%s
+D a-comlin.ads		20230707070819 4aa66568 ada.command_line%s
+D a-except.ads		20230707070819 a7106115 ada.exceptions%s
+D a-ioexce.ads		20230707070819 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20230707070819 119b8fb3 ada.streams%s
+D a-tags.ads		20230707070819 491b781d ada.tags%s
+D a-textio.ads		20230707070819 aef4d56d ada.text_io%s
+D a-unccon.ads		20230707070819 0e9b276f ada.unchecked_conversion%s
+D interfac.ads		20230707070819 5ab55268 interfaces%s
+D i-cstrea.ads		20230707070819 e53d8b8e interfaces.c_streams%s
+D philorun.adb		20240514101636 07d2a9b4 philorun%b
+D philosophers.ads	20240514101722 07a714ce philosophers%s
+D system.ads		20230707070819 4635ec04 system%s
+D s-conca2.ads		20230707070819 02a0d7d0 system.concat_2%s
+D s-crtl.ads		20230707070819 0ebbdb71 system.crtl%s
+D s-exctab.ads		20230707070819 54135002 system.exception_table%s
+D s-ficobl.ads		20230707070819 078245e4 system.file_control_block%s
+D s-imgint.ads		20230707070819 02dbe0c2 system.img_int%s
+D s-parame.ads		20230707070819 48ec542b system.parameters%s
+D s-secsta.ads		20230707070819 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20230707070819 a7318a92 system.soft_links%s
+D s-stache.ads		20230707070819 a37c21ec system.stack_checking%s
+D s-stalib.ads		20230707070819 09bd3940 system.standard_library%s
+D s-stoele.ads		20230707070819 2dc34a04 system.storage_elements%s
+D s-traent.ads		20230707070819 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20230707070819 34867c83 system.unsigned_types%s
+D s-valint.ads		20230707070819 b5ff6963 system.val_int%s
+D s-wchcon.ads		20230707070819 1b7d22d2 system.wch_con%s
+G a e
+G c Z b b [philorun standard 5 11 none]
+G r c none [philorun standard 5 11 none] [simulation philosophers 3 11 none]
+X 1 ada.ads
+16K9*Ada 20e8 11|1r6 2r6 2r23 10r6 11r5 16r36 17r32
+X 2 a-comlin.ads
+36K13*Command_Line 144e21 11|1w10 10r10 16r40 17r36
+39V13*Argument_Count{natural} 11|10s23
+52V13*Argument{string} 11|16s53 17s49
+X 7 a-textio.ads
+57K13*Text_IO 727e16 11|2w10 2r27 11r9
+508U14*Put_Line 11|11s17 19s3 20s3
+X 11 philorun.adb
+5U11*philorun 5b11 28l5 28t13
+6i3 NumPhilosophers{natural} 16m3 19r46 27r15
+7i3 EatenEnough{natural} 17m3 20r42 27r32
+X 12 philosophers.ads
+1K9*Philosophers 11|3w6 3r24 12|5e17
+3U11*Simulation 11|27s3
+
