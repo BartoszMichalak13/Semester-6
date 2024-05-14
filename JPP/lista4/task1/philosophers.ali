@@ -23,7 +23,7 @@ RV MAX_TASK_ENTRIES=1
 RV MAX_TASKS=1+
 RV MAX_ENTRY_QUEUE_LENGTH=1+
 
-U philosophers%b	philosophers.adb	6928df4f NE OO PK
+U philosophers%b	philosophers.adb	51fdb6cd NE OO PK
 W ada%s			ada.ads			ada.ali
 Z ada.exceptions%s	a-except.adb		a-except.ali
 Z ada.real_time%s	a-reatim.adb		a-reatim.ali
@@ -62,7 +62,7 @@ D interfac.ads		20230707070819 5ab55268 interfaces%s
 D i-c.ads		20230707070819 5421119b interfaces.c%s
 D i-cstrea.ads		20230707070819 e53d8b8e interfaces.c_streams%s
 D philosophers.ads	20240514101722 07a714ce philosophers%s
-D philosophers.adb	20240514101628 c07b1eec philosophers%b
+D philosophers.adb	20240514105921 f8ae776e philosophers%b
 D system.ads		20230707070819 4635ec04 system%s
 D s-atacco.ads		20230707070819 4c36d12f system.address_to_access_conversions%s
 D s-conca3.ads		20230707070819 0b705ca5 system.concat_3%s
@@ -105,33 +105,37 @@ X 1 ada.ads
 16K9*Ada 20e8 14|1r6 1r23
 X 8 a-textio.ads
 57K13*Text_IO 727e16 14|1w10 1r27
-508U14*Put_Line 14|61s5 70s11 76s13
+508U14*Put_Line 14|55s5 64s11 70s13
 X 13 philosophers.ads
-1K9*Philosophers 5l5 5e17 14|6b14 112l5 112t17
-3U11*Simulation 3>24 4>26 14|8b11 111l5 111t15
-3i24 NumPhilosophers{natural} 14|8b24 27r31 60r25 62r28 86r31 106r15
-4i26 EatenEnough{natural} 14|9b26 71r56 75r23
+1K9*Philosophers 5l5 5e17 14|6b14 87l5 87t17
+3U11*Simulation 3>24 4>26 14|8b11 86l5 86t15
+3i24 NumPhilosophers{natural} 14|8b24 20r31 54r25 56r28 80r31 83r15
+4i26 EatenEnough{natural} 14|9b26 65r56 69r23
 X 14 philosophers.adb
-18W18 Fork 23E5 24l7 24e11 27r51 31b18 46l7 46t11
-19Y11 PickUp 19>18 32b11 36l9 36t15 66s36 68s39
-19i18 ID{natural}
-20Y11 PutDown 20>19 37b11 41l9 41t16 73s39 74s38 80s38
-20i19 ID{natural}
-21V14 IsTaken{boolean} 42b14 45l9 45t16 65s41 67s44
-23b5 Taken{boolean} 33r16 35r7 38r12 40r7 44r14
-27a3 PhilosopherForks(18W18) 65r14 66r9 67r16 68r11 73r11 74r11 80r11
-32i18 ID{natural}
-37i19 ID{natural}
-48T13 Philosopher 50l7 50e18 52b13 84l7 84t18 86r51
-49Y11 SetPhilosopher 49>26 57b10 63l7 63t21 107s25
-49i26 I{natural} 58r11 59r17 60r19 61r45 62r22 62r76
-53i5 LeftFork{natural} 59m5 65r31 66r26 74r28 80r28
-53i15 RightFork{natural} 60m5 67r33 68r28 73r28
-54i5 Eaten{natural} 69m11 69r20 71r27 75r14
-55i5 ID{natural} 58m5 66r43 68r46 70r51 73r47 74r46 76r53 80r46
-57i27 I{natural}
-86a3 PhilosopherArray(48T13) 107r5
-106i7 i{integer} 107r22 107r40
+10W18 Fork 16E5 17l7 17e11 20r51 22b18 40l7 40t11
+12Y11 PickUp 12>18 12>31 24b11 29l9 29t15 60s36 62s39
+12i18 ID{natural}
+12i31 fid{natural}
+13Y11 PutDown 13>19 13>32 30b11 35l9 35t16 67s39 68s38 74s38
+13i19 ID{natural}
+13i32 fid{natural}
+14V14 IsTaken{boolean} 36b14 39l9 39t16 59s41 61s44
+16b5 Taken{boolean} 25r16 28r7 31r12 34r7 38r14
+20a3 PhilosopherForks(10W18) 59r14 60r9 61r16 62r11 67r11 68r11 74r11
+24i18 ID{natural}
+24i31 fid{natural}
+30i19 ID{natural}
+30i32 fid{natural}
+42T13 Philosopher 44l7 44e18 46b13 78l7 78t18 80r51
+43Y11 SetPhilosopher 43>26 51b10 57l7 57t21 84s25
+43i26 I{natural} 52r11 53r17 54r19 55r45 56r22 56r76
+47i5 LeftFork{natural} 53m5 59r31 60r26 60r47 68r28 68r50 74r28 74r50
+47i15 RightFork{natural} 54m5 61r33 62r28 62r50 67r28 67r51
+48i5 Eaten{natural} 63m11 63r20 65r27 69r14
+49i5 ID{natural} 52m5 60r43 62r46 64r51 67r47 68r46 70r53 74r46
+51i27 I{natural}
+80a3 PhilosopherArray(42T13) 84r5
+83i7 i{integer} 84r22 84r40
 X 15 system.ads
 67M9*Address
 X 26 s-memory.ads

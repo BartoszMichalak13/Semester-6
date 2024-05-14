@@ -7,17 +7,10 @@ package body Philosophers is
 
 procedure Simulation ( NumPhilosophers : Natural;
                          EatenEnough : Natural ) is
-  --Number of Philosophers
-  --  NumPhilosophers : Natural := 5;
-  --  NumPhilosophers : Natural;
-  -- how much to eat
-  --  EatenEnough : Natural := 100; 
-  --  EatenEnough : Natural; 
-  --  type PhilosopherID is range 1 .. NumPhilosophers;
-
   protected type Fork is
-    entry PickUp(ID: Natural);
-    entry PutDown(ID: Natural);
+    -- fid's are for debuging purposes
+    entry PickUp(ID: Natural; fid: Natural);
+    entry PutDown(ID: Natural; fid: Natural);
     function IsTaken return Boolean; -- Function to check if fork is taken
   private
     Taken : Boolean := False;
@@ -25,18 +18,19 @@ procedure Simulation ( NumPhilosophers : Natural;
 
   -- all available forks
   PhilosopherForks : array(1..NumPhilosophers) of Fork; 
-  --  type PhilosopherForksArray is array(Positive range <>) of Fork; 
-  --  PhilosopherForks: PhilosopherForksArray;
 
   protected body Fork is
-    entry PickUp(ID: Natural) 
+    --  entry PickUp(ID: Natural) 
+    entry PickUp(ID: Natural; fid: Natural) 
       when not Taken is
     begin
+      --  Put_Line("fork " & Natural'Image(fid) &" PickUp by " & Natural'Image(ID));
       Taken := True;
     end PickUp;
-    entry PutDown(ID: Natural) 
+    entry PutDown(ID: Natural; fid: Natural) 
       when Taken is
     begin
+        --  Put_Line("fork " & Natural'Image(fid) &" PutDown by " & Natural'Image(ID));
       Taken := False;
     end PutDown;
     function IsTaken return Boolean is
@@ -63,21 +57,21 @@ procedure Simulation ( NumPhilosophers : Natural;
   end SetPhilosopher;
     loop
       if not PhilosopherForks(LeftFork).IsTaken then
-        PhilosopherForks(LeftFork).PickUp(ID);
+        PhilosopherForks(LeftFork).PickUp(ID, LeftFork);
         if not PhilosopherForks(RightFork).IsTaken then
-          PhilosopherForks(RightFork).PickUp(ID);
+          PhilosopherForks(RightFork).PickUp(ID, RightFork);
           Eaten := Eaten + 1;
           Put_Line("Philosopher " & Natural'Image(ID) & " Eaten = " &
             Natural'Image(Eaten) & "/" & Natural'Image(EatenEnough));
 
-          PhilosopherForks(RightFork).PutDown(ID);
-          PhilosopherForks(LeftFork).PutDown(ID);
+          PhilosopherForks(RightFork).PutDown(ID, RightFork);
+          PhilosopherForks(LeftFork).PutDown(ID, LeftFork);
           if Eaten >= EatenEnough then
             Put_Line("Philosopher " & Natural'Image(ID) & " is Full");
             exit;
           end if;
         else 
-          PhilosopherForks(LeftFork).PutDown(ID);
+          PhilosopherForks(LeftFork).PutDown(ID, LeftFork);
         end if;
       end if;
     end loop;
@@ -86,27 +80,8 @@ procedure Simulation ( NumPhilosophers : Natural;
   PhilosopherArray : array(1..NumPhilosophers) of Philosopher;
 
 begin
-  --  if Ada.Command_Line.Argument_Count /= 2 then
-  --    Ada.Text_IO.Put_Line("Usage: philosophers <NumPhilosophers> <EatenEnough>");
-  --    return;
-  --  end if;
-
-  --   -- Parse command-line arguments
-  --  NumPhilosophers := Natural'Value(Ada.Command_Line.Argument(1));
-  --  EatenEnough := Natural'Value(Ada.Command_Line.Argument(2));
-
-  --  --  declare 
-  --  --    PhilosopherForks: PhilosopherForksArray(1..NumPhilosophers)
-
-  --  --  MyPhilosopherArray := CreatePhilosopherArray(NumPhilosophers);
-  --  --  PhilosopherForks := CreatePhilosopherForksArray(NumPhilosophers);
-
-  --  Put_Line("#Philosophers =" & Natural'Image(NumPhilosophers));
-  --  Put_Line("#Dininigs =" & Natural'Image(EatenEnough));
   for i in 1..NumPhilosophers loop
     PhilosopherArray(i).SetPhilosopher(i);
-    --  MyPhilosopherArray(i).SetPhilosopher(i);
   end loop;
-
 end Simulation;
 end Philosophers;
