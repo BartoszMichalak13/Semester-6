@@ -1,2 +1,2 @@
-run:
-	go run philosophers.go
+# run:
+# 	go run philosophersdining.go
