@@ -21,6 +21,10 @@ public class GF {
   public GF(final long p) {
     this.p = p;
   }
+   public GF(long value, final long p) {
+    this.p = p;
+    this.value = value;
+  }
   public long getP() {
     return this.p;
   }
