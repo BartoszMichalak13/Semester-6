@@ -38,18 +38,6 @@ unsigned long long int lecturesPow(\
   }
   return y;
 }
-// unsigned long long int uint_pow(\
-//       unsigned long long int base,\
-//       unsigned long long int exp) {
-//   unsigned long long int result = 1;
-//   while (exp) {
-//     if (exp % 2)
-//       result *= base;
-//     exp /= 2;
-//     base *= base;
-//   }
-//   return result;
-// }
 
 void lecturesAlg(\
       unsigned long int n,\
@@ -81,27 +69,6 @@ void lecturesAlg(\
   // }
   *q = n/(*p);
 }
-
-
-
-/*  Sieve of Eratosthenes which also returs highest prime in range
-    known violation of single principle rule in exchange for 
-    possible faster execution than 2 separete functions
-*/
-// void sieve(\
-//       bool *prime,\
-//       unsigned long long int n,\
-//       unsigned long long int* highestPrime) {
-//   prime[0] = prime[1] = false; // 0 and 1 are not primes
-//   for (unsigned long long int p = 2; p * p <= n; p++) {
-//     if (prime[p]) {
-//       for (unsigned long long int i = p * 2; i <= n; i += p) {
-//         prime[i] = false;
-//       }
-//       *(highestPrime) = p;
-//     }
-//   }
-// }
 
 // Function to find the modular inverse of 'a' modulo 'm' 
 //using the Extended Euclidean Algorithm
@@ -136,33 +103,6 @@ int modInverse(\
   return x;
 }
 
-//used to calculate inverse of e
-// static unsigned long long int gcdExtended(\
-//       unsigned long long int a,\
-//       unsigned long long int b,\
-//       long long int *x,\
-//       long long int *y,
-//       unsigned long long int n) {
-//   // Base Case
-//   if (a == 0) {
-//     *x = 0;
-//     *y = 1;
-//     return b;
-//   }
-//   long long int x1, y1; // To store results of recursive call
-//   unsigned long long int result = gcdExtended(b % a, a, &x1, &y1, n);
-//   // Update x and y using results of recursive call
-//   *x = (y1 - (b / a) * x1) % n;
-
-//   // *x = y1 - (b / a) * x1;
-//   *y = (x1) % n;
-//   return result;
-// }
-
-//since q and p are prime instead of Carmichael's totient func
-//we use Euler's totient funct, but since they are prime
-//for p it is equal p-1, so we only use this function for n
-
 //because we have info about what n,p,q are we know that:
 //lambda(n) = lcm(lambda(p),lambda(q)) = lcm(p-1,q-1)
 static size_t OptimizedCarmichaelTotientFunction(\
@@ -170,10 +110,6 @@ static size_t OptimizedCarmichaelTotientFunction(\
       unsigned long long int const q) {
   return lcm(p-1,q-1);
 }
-
-// KeyPair RSA() {
-
-// }
 
 static bool checkIfPrime(unsigned long long int const p) {
   if (p == 1) {
