@@ -1,13 +1,14 @@
 #include <time.h>
 #include "head1.h"
-// Some of bank identifiers - short
-const short bank_ids_short[] = {
+
+const short bankIds[] = {
   1020, // PKO BP
   1030, // Citi Handlowy
   1050, // ING Bank Śląski
   1060, // Bank BPH
   1140  // mBank
 };
+const size_t bankIds_size = sizeof(bankIds) / sizeof(bankIds[0]);
 // Generate a random digit - short
 short random_digit_short() {
   return rand() % 10;
@@ -66,7 +67,7 @@ void generate_bank_accounts(\
   for (short bank = 0; bank < BankNum; bank++) {
     for (short i = 0; i < AccountPerBank; i++) {
       // Copy bank identifier as an integer
-      short bank_id = bank_ids_short[bank];
+      short bank_id = bankIds[bank];
       account[2] = (bank_id / 1000) % 10;
       account[3] = (bank_id / 100) % 10;
       account[4] = (bank_id / 10) % 10;
@@ -76,6 +77,10 @@ void generate_bank_accounts(\
       for (short j = 6; j < ACCLEN; j++) {
         account[j] = random_digit_short();
       }
+
+      // Calculate checksum
+      short checksum = calculate_checksum(account);
+      account[9] = checksum;
       short tmpAcc[29];
       for (short i = 0; i < ACCLEN - 2; ++i) {
         tmpAcc[i] = account[i+2];
@@ -85,10 +90,14 @@ void generate_bank_accounts(\
       tmpAcc[26] = 2;
       tmpAcc[27] = 1;
 
+      //to poniezej wrzucic do osobnej funkcji mozna
+      //w bankCrack mozna 2 konta naraz sprawdzac czy CC sie zgadza
+      //
+
       size_t sum = 0;
-      for (short i = 0; i < ACCLEN + 1; ++i) {
+      for (short i = 0; i < ACCLEN + 2; ++i) {
         size_t value = tmpAcc[i];
-        for (short j = i; j < ACCLEN + 1; ++j) {
+        for (short j = i; j < ACCLEN + 2; ++j) {
           value *= 10;
         }
         sum += value;
@@ -99,9 +108,9 @@ void generate_bank_accounts(\
       account[0] = (kk - (kk % 10)) / 10;
       account[1] = kk % 10;
 
-      // Calculate checksum
-      short checksum = calculate_checksum(account);
-      account[9] = checksum;
+      // // Calculate checksum
+      // short checksum = calculate_checksum(account);
+      // account[9] = checksum;
       printf("verified = %d\n", verify_check_digit(account));
 
       char accStr[ACCLEN + 1];

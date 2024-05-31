@@ -8,7 +8,9 @@
 #include <stdbool.h>
 #define ASCII_MAX 256
 #define ACCLEN 26
-
+// Some of bank identifiers - short
+extern const short bankIds[];
+extern const size_t bankIds_size;
 /*
 rc4
 */
@@ -63,6 +65,7 @@ int keyDetect(\
 /*
 accGen
 */ 
+
 void generate_bank_accounts(\
   const short BankNum,\
   const short AccountPerBank,\
