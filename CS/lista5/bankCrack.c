@@ -741,7 +741,6 @@ int bankCrack(\
         for (short jj = 0; jj < 10; ++jj) { // find second c
           if (finalPossible[i][1][jj]) { //both cc are possible
             //here for those CC we check ALL posibilities
-
             // printf("\nCC = %d%d\n",j,jj);
             short tmpAsCounter = asCounter[i];
             while (tmpAsCounter) { // check all As
