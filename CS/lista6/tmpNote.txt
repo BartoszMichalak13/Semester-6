@@ -1,0 +1,1 @@
+127.0.0.1:8080/WebGoat/start.mvc?username=ttlreess#test/%3Cscript%3Ewebgoat%2Ecustomjs%2EphoneHome%28%29%3B%3C%5Cscript%3E

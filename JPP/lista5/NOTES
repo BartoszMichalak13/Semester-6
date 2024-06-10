@@ -8,3 +8,30 @@ TODO:
 
 
   rekursja ogonowa mile widziana, 
+
+
+  (defun totient3 (n)
+  (let ((res 0))
+    (print "n")
+    (print n)
+   (if (> n 1)
+      (
+        let ((count (- n 1)))
+          (if (= (myGcd count n) 1)
+            (incf res)
+          )
+          ;;      (+ res (totient3 (- n 1)))
+
+        (print "res1")
+        (print res)
+        (+ res (totient3 (- n 1)))
+        (print "res2")
+        (print res)
+        (print "totient3")
+        (print (totient3 (- n 1)))
+      )
+      ((+ res 0))
+   )
+   ;;(+ res 0)
+  )
+)
